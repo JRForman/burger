@@ -37,6 +37,7 @@ var orm = {
         });
     },
     insertOne: function (tableInput, cols, vals, cb) {
+        console.log(vals);
         var queryString = "INSERT INTO " + tableInput;
         queryString += " (";
         queryString += cols.toString();
@@ -47,7 +48,7 @@ var orm = {
 
         console.log(queryString);
 
-        connection.query(queryString, function (err, result) {
+        connection.query(queryString, vals, function (err, result) {
             if (err) {
                 throw err;
             }
